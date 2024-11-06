@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Go-Joke</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .joke-section {
+            width: 80%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .joke-text {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .refresh-button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .refresh-button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+<div class="joke-section">
+    <p class="joke-text" id="joke-text"></p>
+</div>
+
+<div style="display: flex; justify-content: center; align-items: center;">
+    <button class="refresh-button" id="refresh-button">Refresh Joke</button>
+</div>
+
+<script>
+    // Fetch initial joke on page load
+    fetchJoke();
+
+    // Refresh joke on button click
+    document.getElementById('refresh-button').addEventListener('click', () => {
+        fetchJoke();
+    });
+
+    function fetchJoke() {
+        // Get joke from API (replace with your API endpoint)
+        const jokeApiUrl = '/api/joke';
+        fetch(jokeApiUrl)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('joke-text').innerHTML = data.joke;
+            })
+            .catch(error => console.error('Error fetching joke:', error));
+    }
+</script>
+</body>
+</html>

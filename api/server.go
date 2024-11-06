@@ -8,9 +8,8 @@ import (
 func NewServer() *gin.Engine {
 	engine := gin.Default()
 	engine.Use(middleware.Recovery())
-	api := engine.Group("api")
 
-	registerRoutes(api)
+	registerRoutes(engine)
 
 	return engine
 }
