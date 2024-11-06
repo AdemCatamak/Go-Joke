@@ -1,0 +1,8 @@
+{
+  "PORT": "8181",
+  "ShowUnexpectedErrors": true,
+  "JokeApiSettings": {
+    "BaseUrl": "https://icanhazdadjoke.com/",
+    "Timeout": 5000
+  }
+}
